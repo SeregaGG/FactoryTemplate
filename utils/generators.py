@@ -9,7 +9,7 @@ from utils.members_names import members
 def event_generator(data_range: list[datetime.datetime], events_count=4) -> list[Event]:
     event_list = []
     for i in range(0, events_count):
-        tz = datetime.timezone(offset=datetime.timedelta(hours=random.randint(-12, 14)))
+        tz = datetime.timezone(offset=datetime.timedelta(hours=0))
 
         event_name = ''
         while len(event_name) < 100:
