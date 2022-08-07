@@ -25,7 +25,7 @@ def test_events_struct(event_list_serialize):
 
 
 def test_events_valid_data(event_list_generator):
-    for event in event_list_generator:
+    for event in event_list_generator[0]:
         assert len(event.event_name) <= 100
         list_event_name = event.event_name.split(' ')
         assert len(max(list_event_name, key=lambda x: len(x))) <= 20
