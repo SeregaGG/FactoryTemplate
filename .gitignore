@@ -5,7 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
-
+*.json
+!spec/*.json
 # Distribution / packaging
 .Python
 build/

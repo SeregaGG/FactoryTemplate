@@ -1,14 +1,14 @@
-from ObjectsToGenerate.Event import Event
-from utils.event_type import EventType
+from models.Event import Event
+from entitys.event_type import EventType
 from itertools import groupby
-import json
+from services.dumper import Dumper
 
 
 class ObjectSerializer:
 
-    def serialize(self, current_object, file_name):
+    def serialize(self, current_object):
         serializer = self._get_serializer(current_object[0])
-        return serializer(current_object, file_name)
+        return serializer(current_object)
 
     @classmethod
     def _get_serializer(cls, current_object):
@@ -19,7 +19,7 @@ class ObjectSerializer:
                 raise ValueError('Unknown type.')
 
     @staticmethod
-    def event_serializer(event_list: list[Event], file_name):
+    def event_serializer(event_list: list[Event]):
         keyfunc = lambda x: x.event_datetime.strftime('%Y-%m-%d')
         event_list = sorted(event_list, key=keyfunc)
         event_body = {}
@@ -33,5 +33,4 @@ class ObjectSerializer:
                 serializable_grouped_event_list = [x.as_dict() for x in grouped_event_list]
                 event_body.update({date: serializable_grouped_event_list})
 
-        with open(f'{file_name}.json', 'w') as fp:
-            json.dump(event_body, fp)
+            return event_body

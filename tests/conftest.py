@@ -1,10 +1,10 @@
 import random
 
 import pytest
-from ObjectFactory.ObjectFactory import ObjectFactory
+from models.ObjectFactory import ObjectFactory
 from Serializers.ObjectSerializer import ObjectSerializer
-from ObjectsToGenerate.Event import Event
-
+from models.Event import Event
+from services.dumper import Dumper
 
 @pytest.fixture(scope='function', params=[('2020-02-20', '2020-03-20', 100, 'file_name1'), ('2020-04-20', '2020-06-20', 300, 'file_name2')])
 def event_list_generator(request):
@@ -18,7 +18,8 @@ def event_list_generator(request):
 def event_list_serialize(event_list_generator):
     event_list, file_name = event_list_generator
     serializer = ObjectSerializer()
-    serializer.serialize(event_list, file_name)
+    serial_data = serializer.serialize(event_list)
+    Dumper.dump(serial_data, file_name)
     return file_name
 
 

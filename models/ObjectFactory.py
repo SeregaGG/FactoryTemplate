@@ -1,11 +1,11 @@
 import random
 
-from ObjectsToGenerate.Event import Event
+from models.Event import Event
 import datetime
 
-from utils.event_type import EventType
-from utils.generators import generate_random_word
-from utils.members_names import members
+from entitys.event_type import EventType
+from services.generators import generate_random_word
+from entitys.members_names import members
 
 
 class ObjectFactory:
