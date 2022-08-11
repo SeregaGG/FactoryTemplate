@@ -1,6 +1,6 @@
 import datetime
 
-from utils.event_type import EventType
+from entitys.event_type import EventType
 
 
 class Event:

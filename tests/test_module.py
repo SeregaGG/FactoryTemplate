@@ -1,9 +1,8 @@
 # content of test_module.py
-import datetime
 import json
-from utils.event_type import EventType
+from entitys.event_type import EventType
 
-from utils.generators import generate_random_word
+from services.generators import generate_random_word
 
 
 def test_word_generator(random_len):
